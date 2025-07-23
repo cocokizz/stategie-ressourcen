@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wahl Group | Strategie & Ressourcen</title>
+    
+    <!-- Google Font Import: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- CSS Variablen (zentrale Steuerung) --- */
+        :root {
+            --bg-dark: #121212;
+            --bg-light: #1E1E1E;
+            --primary-accent: #00A8A8; /* Ein moderner Teal-Ton als Akzent */
+            --text-primary: #FFFFFF;
+            --text-secondary: #B3B3B3;
+            --border-color: #333333;
+            --font-family: 'Poppins', sans-serif;
+        }
+
+        /* --- Basis- & Reset-Styles --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+
+        /* --- Globale Helferklassen --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 6rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        section:last-of-type {
+            border-bottom: none;
+        }
+
+        h1, h2, h3 {
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        h1 { font-size: 3rem; color: var(--text-primary); }
+        h2 { font-size: 2.5rem; color: var(--text-primary); text-align: center; }
+        h3 { font-size: 1.8rem; color: var(--primary-accent); }
+        h4 { font-size: 1.2rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--text-primary)}
+
+        p {
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+            max-width: 100%;
+        }
+
+        a {
+            color: var(--primary-accent);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--text-primary);
+        }
+
+        .text-center {
+            text-align: center;
+        }
+        .text-center p {
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 70ch;
+        }
+        
+        ul, ol {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        li {
+             margin-bottom: 0.75rem;
+             padding-left: 1.5rem;
+             position: relative;
+        }
+        li::before {
+            content: '•';
+            color: var(--primary-accent);
+            font-weight: bold;
+            display: inline-block;
+            position: absolute;
+            left: 0;
+        }
+
+        /* --- Header & Navigation --- */
+        .main-header {
+            position: sticky;
+            top: 0;
+            width: 100%;
+            padding: 1rem 2rem;
+            background-color: rgba(18, 18, 18, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .main-header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-svg {
+            width: 150px;
+            height: auto;
+            fill: var(--text-primary);
+        }
+
+        .main-nav ul {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        .main-nav a {
+            color: var(--text-secondary);
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .main-nav a:hover, .main-nav a.active {
+            color: var(--text-primary);
+        }
+
+
+        /* --- Hero Section --- */
+        #hero {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        #hero .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        #hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin-bottom: 2rem;
+        }
+
+        /* --- Audio Player Styling --- */
+        audio {
+            width: 100%;
+            max-width: 500px;
+            margin-top: 2rem;
+            border-radius: 5px;
+        }
+
+        audio::-webkit-media-controls-panel {
+            background-color: var(--bg-light);
+        }
+
+        audio::-webkit-media-controls-play-button,
+        audio::-webkit-media-controls-volume-slider,
+        audio::-webkit-media-controls-mute-button,
+        audio::-webkit-media-controls-timeline {
+            filter: invert(1);
+        }
+
+        /* --- General Card & Grid Styles --- */
+        .card {
+            background-color: var(--bg-light);
+            padding: 2rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            height: 100%;
+            margin-bottom: 2rem;
+        }
+        .grid-layout {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        /* --- Table Styling --- */
+        .table-wrapper {
+            overflow-x: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 2rem;
+        }
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+        th {
+            color: var(--primary-accent);
+            font-weight: 600;
+        }
+        td {
+            color: var(--text-secondary);
+        }
+        tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* --- Scroll Animation --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- Footer --- */
+        .main-footer {
+            padding: 2rem;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* --- Responsivität --- */
+        @media (max-width: 768px) {
+            section { padding: 4rem 0; }
+            .main-header { padding: 1rem; }
+            .main-nav { display: none; }
+            .container { padding: 0 1.5rem; }
+            .grid-layout { grid-template-columns: 1fr; }
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container">
+            <!-- SVG Logo direkt eingebettet -->
+            <svg class="logo-svg" viewBox="0 0 457.9 204.18" xmlns="http://www.w3.org/2000/svg"><path d="M191.3,0l-95.7,140.8h-29.2l-.7-.7v-50.8c0-.2,1.2-.8-.2-.7l-35.5,52.2H.7l-.7-.7V34h30.7v52.2l35.2-52.2h30.4v52.2L154.9,0h36.4Z"/><polygon points="303.5 34 292 71.4 329.4 71.4 341.6 34 376.4 34 342.6 140.8 307.8 140.8 320.8 97.7 283.9 97.7 270.2 140.8 235.4 140.8 268 34 303.5 34"/><path d="M222.5,34l8.2,106.8h-34l-.5-17.2h-35.7l-10.5,17.2h-37.6l72.2-106.8h38.1-.2ZM196.1,100.6v-37.8l-22.1,37.8h22.1Z"/><polygon points="427.2 34 402.8 114.5 457.9 114.5 450.1 139 449.1 140.8 359.1 140.8 392.2 34 427.2 34"/><path d="M195.6,171v-2.4l4.1.5.2.7c-.4,9.7,1,19.5-1.2,29-3.2,7.6-21.2,7.6-20.4-2.9,1.3,0,3.7-.3,4.5,1s.3,2.1,2.4,2.9c6,2.4,11-2,9.9-8.2-5.4,3.9-12.3,3.4-15.7-2.7-5.2-9.3.5-24.2,12.7-19.9l3.5,2h0ZM188.3,172c-8.7.8-8.4,19.6,1.8,18.1s7.4-14.6,1.6-17.3-2.6-.8-3.3-.8h-.1Z"/><path d="M10.1,187.3l5.3-18.6,4.5.4,4.5,17.7c.7,0,.8-.7.9-1.2,1.9-5.4,3.1-11.5,4.8-17h4.3l-7.6,25.2-4.8.2-4.6-18.2-4.6,18.2h-5l-7.8-25.4,5,.5,5,18.2h.1Z"/><path d="M409,159.5v34.5h-4.3v-2.4c-4.9,5.1-12.6,3.4-15.9-2.5s-1.9-17.8,5.7-20.3,6.9-.4,9.7,2.3v-11.5h4.8v-.1ZM397.9,172c-8.2.7-7.9,17-1,18.5s8.3-5.8,7.8-11.2-2.8-7.7-6.8-7.3Z"/><path d="M328.5,192v11.5h-4.3v-35h3.8v2.9l2.2-1.8c6.6-3.9,14.5.5,15.5,7.9s-2.3,18.3-13.1,16.9l-4.2-2.3.1-.1ZM330.5,189c2.3,2.3,6.2,2.1,8.5,0s3.2-11.9.2-15.1-9.4-.9-10.7,4.2-.5,8.6,1.9,11l.1-.1Z"/><path d="M449.3,182.9h-18.2c-.7,6.7,8.1,10.7,12.2,5.3s.7-2.1,1.5-2.3l4.5.4c-.8,4-4.8,7.8-8.9,8.2-11.1,1.1-15.5-6.2-14.1-16.5s5.2-9.1,9.9-9.7c8.8-1.2,14.2,6.5,13.1,14.7v-.1ZM444.5,178.6c-.8-8.8-12.4-8.6-13.4,0h13.4Z"/><path d="M71.9,194h-4.8l-.8-2.4c-2,.7-3.7,2.4-5.9,2.8s-6.4.3-8.5-.9c-3.6-2.1-4.3-6.3-2.3-9.9,2.9-5.1,11.4-4.2,16.4-5.4,0-2.9-.3-4.8-3.2-5.6s-8.4-.2-8.8,4.2l-4.8-.5c.4-2.1,1.4-4.4,3.1-5.8,4.4-3.4,17-3.6,18,3.1s-.2,7.9,0,11.5.3,4.7.5,6.2,1,1.6.9,2.6l.2.1ZM66.2,181.5c-4.2,2.5-14.8.1-11.9,7.8,3.4,2.9,9.2,1.4,11.2-2.6l.7-5.3v.1Z"/><path d="M93.5,159.5v12c4-4.1,10.9-4.8,14.6,0s.8.8,1,1.4.7,2.5.7,2.7v18.4h-4l-.7-.8v-17.2c-1-3.9-5.3-4.6-8.5-2.7s-2.1,3.1-3,5.6v15.1h-4.3v-34.5h4.3-.1Z"/><path d="M255,168.2c6.2-.9,11.9,3.1,13.1,9.2s.3,8.3-1.2,11.3c-4.1,8.2-17.8,7.8-21.1-1s-1.5-12.7,2.6-16.5,4.3-2.7,6.6-3ZM256.4,172.1c-8.3.2-9.4,13.6-3.2,17.8s5.2,1.1,6.9-.2c6-4.4,4.6-17.8-3.8-17.6h.1Z"/><path d="M289.6,168.6v18.4c0,.2,1.3,2.2,1.7,2.6,2.8,2,6.4,1,8.3-1.6s1.4-2.9,1.4-3.4v-16h4.3v25.4h-3.8l-.2-2.9c-3.1,4-10.1,4.6-13.9,1.4s-2.2-2.9-2.2-3.6v-20.4h4.3l.1.1Z"/><path d="M218.2,168.6h3.8v2.9c2.9-3,5.9-4.9,9.5-1.6l-.9,4c-.3.4-4.2-2.8-6.6.8s-1.5,3.4-1.5,3.8v15.6h-4.3v-25.5Z"/><rect x="128" y="159.5" width="4.3" height="34.5"/><rect x="149.6" y="179.1" width="12.9" height="4.8"/><path d="M369.7,194h-5.3v-5.3l4.8.2c.9.6.3,3.9.5,5.1Z"/></svg>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#strategie">Strategie</a></li>
+                    <li><a href="#ressourcen">Ressourcen</a></li>
+                    <li><a href="#zeitplanung">Zeitplanung</a></li>
+                    <li><a href="#markenstrategie">Markenstrategie</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- ======= Hero Section ======= -->
+        <section id="hero">
+            <div class="container">
+                <h1 class="reveal">Strategie & Ressourcenplanung</h1>
+                <p class="reveal">Die proaktive und strategische Planung von Ressourcen ist der Schlüssel zu einem nachhaltigen und wirkungsvollen Social-Media-Auftritt.</p>
+                <audio controls class="reveal">
+                    <source src="Stategie-Ressourcen.wav" type="audio/wav">
+                    Ihr Browser unterstützt das Audio-Element nicht.
+                </audio>
+            </div>
+        </section>
+
+        <!-- ======= Strategie Section ======= -->
+        <section id="strategie" class="reveal">
+            <div class="container">
+                <div class="text-center">
+                    <h2>Strategischer Rahmen & Operativer Plan</h2>
+                    <p>Unsere Vorgehensweise: Warum, für wen, was, wann und wo?</p>
+                </div>
+                
+                <div class="card" style="margin-top: 3rem;">
+                    <h3>1. Strategischer Rahmen: Unser Fokus</h3>
+                    <p>Um die Ressourcen zielgerichtet zu planen, konzentrieren wir uns auf folgende Kernziele:</p>
+                    <ul>
+                        <li><strong>Employer Branding:</strong> Die Wahl Group als attraktiven und modernen Arbeitgeber in der Region Siegen-Wittgenstein positionieren.</li>
+                        <li><strong>Expertenstatus (B2B):</strong> Die Kompetenz und Innovationskraft unserer Unternehmensgruppe demonstrieren.</li>
+                        <li><strong>Corporate Identity:</strong> Die Wahrnehmung der Wahl Group als verlässliche und zukunftsorientierte Holding stärken.</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>2. Operativer Content-Plan: Frequenz & Plattformen</h3>
+                    <p>Ein Mix für konsistente Präsenz ohne Überlastung.</p>
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Plattform</th>
+                                    <th>Posts / Woche</th>
+                                    <th>Stories / Woche</th>
+                                    <th>Strategischer Fokus & Content-Art</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>LinkedIn</strong></td>
+                                    <td>3 Posts</td>
+                                    <td>2-3 Stories</td>
+                                    <td>Primärplattform für B2B & Employer Branding.<br>- Post 1: Expertenantwort/Projektvorstellung<br>- Post 2: Einblick Unternehmenskultur<br>- Post 3: Unternehmensnews/Strategie-Update</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Xing</strong></td>
+                                    <td>2-3 Posts</td>
+                                    <td>(Kein Fokus)</td>
+                                    <td>Fokus auf DACH-Netzwerk & Recruiting.<br>- Hauptsächlich Cross-Posting der LinkedIn-Inhalte.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Instagram</strong></td>
+                                    <td>2 Posts</td>
+                                    <td>3-5 Stories</td>
+                                    <td>Visueller Kanal für Employer Branding & Kultur.<br>- Post 1: Hochwertiges Bild/Video vom Team<br>- Post 2: Vorstellung eines Benefits/Fun Fact</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======= Ressourcen Section ======= -->
+        <section id="ressourcen" class="reveal">
+            <div class="container">
+                <div class="text-center">
+                    <h2>Ressourcenliste: Status-Check & Bedarfsanalyse</h2>
+                    <p>Ein professionelles und gleichzeitig effizientes Setup, das der Marke Wahl Group gerecht wird.</p>
+                </div>
+
+                <div class="card" style="margin-top: 3rem;">
+                    <h3>Das Team</h3>
+                    <ul>
+                        <li><strong>Text:</strong> Markus, Jan</li>
+                        <li><strong>Bilder/Videos:</strong> Christina, Jan</li>
+                        <li><strong>Planung/Posting:</strong> Andre, Anne</li>
+                        <li><strong>Community:</strong> Alexandra, Christina</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>1. Digitale Tools (Software & Lizenzen)</h3>
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Tool-Kategorie</th>
+                                    <th>Spezifisches Tool (Beispiele)</th>
+                                    <th>Zweck & Begründung</th>
+                                    <th>Status / Nächster Schritt</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Grafik & Design</strong></td>
+                                    <td>1. Adobe Creative Cloud (oder Affinity)<br>2. Canva</td>
+                                    <td>1. (Für Grafiker): Erstellung der Master-Templates, hochwertige Bildbearbeitung, Videoschnitt.<br>2. (Fürs Team): Schnelle, einfache Anpassung der Templates.</td>
+                                    <td>1. Vorhanden: Ich habe Zugriff.<br>2. Wahrscheinlich fehlend: "Canva for Teams"-Lizenz prüfen.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Bilderstellung / Stock / KI</strong></td>
+                                    <td>Freepik Suite, Midjourney</td>
+                                    <td>Nutzung von KI für Bild- & Videoerstellung, große Stockbilder- & Videodatenbank.</td>
+                                    <td>Jan hat vollwertigen Zugang.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Planung & Veröffentlichung</strong></td>
+                                    <td>Later, Buffer, Hootsuite</td>
+                                    <td>Zentrale Planung, automatisierte Veröffentlichung. Reduziert manuellen Aufwand.</td>
+                                    <td>Wahrscheinlich fehlend: Anschaffung Priorität 1.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Text & Bild KI-Unterstützung</strong></td>
+                                    <td>1. GPT-4, Gemini, etc.<br>2. Duden-Mentor</td>
+                                    <td>1. Als Kreativ-Booster für Ideenfindung, Umformulierung.<br>2. Qualitätssicherung für fehlerfreie Kommunikation.</td>
+                                    <td>1. Fehlend: Richtlinie und Team-Lizenz klären.<br>2. Fehlend: Premium-Lizenz prüfen.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Projektmanagement</strong></td>
+                                    <td>Trello, Asana, MS Planner</td>
+                                    <td>Visueller Redaktionsplan, Abstimmungsprozesse, Ideensammlung.</td>
+                                    <td>Wahrscheinlich vorhanden: Standard-Tool klären.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Community Management</strong></td>
+                                    <td>Agorapulse</td>
+                                    <td>Social Media Inbox, Monitoring, Team-Funktionen.</td>
+                                    <td>Free Version zum Testen (ca. 79$/Monat).</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>2. Technische Ausstattung (Hardware)</h3>
+                    <div class="table-wrapper">
+                         <table>
+                            <thead>
+                                <tr>
+                                    <th>Ausstattung</th>
+                                    <th>Zweck & Begründung</th>
+                                    <th>Status / Nächster Schritt</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Smartphone</strong></td>
+                                    <td>Wichtigstes Tool für spontane, authentische Inhalte (Stories, Behind the Scenes).</td>
+                                    <td>Wahrscheinlich vorhanden: Benötigen aktuelles Firmen-Smartphone mit sehr guter Kamera. -> Modell prüfen.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Systemkamera (DSLR/DSLM)</strong></td>
+                                    <td>Für geplante, hochwertige Inhalte (Porträts, Statements).</td>
+                                    <td>Unklar: Gibt es eine gute Kamera im Marketing? -> Inventur durchführen.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Mikrofon(e)</strong></td>
+                                    <td>ENTSCHEIDEND! Guter Ton ist wichtiger als perfektes Bild. (Ansteck- & Richtmikrofon)</td>
+                                    <td>Wahrscheinlich fehlend: Anschaffung hat sehr hohe Priorität.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Beleuchtung</strong></td>
+                                    <td>1-2 LED-Flächenleuchten oder Ringlicht für professionelle Ausleuchtung.</td>
+                                    <td>Wahrscheinlich fehlend: Geringe Kosten, hohe Wirkung. Sollten wir anschaffen.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Stativ & Gimbal</strong></td>
+                                    <td>Stativ für stabile Aufnahmen (Pflicht). Gimbal für weiche Kamerabewegungen (Kür).</td>
+                                    <td>Wahrscheinlich fehlend: Beides auf die Bedarfsliste setzen.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                 <div class="card">
+                    <h3>Zusammenfassung: Unsere Lücken & Prioritäten</h3>
+                    <p>Um unseren Plan umzusetzen, sehe ich folgende Prioritäten bei der Beschaffung:</p>
+                    <ul>
+                        <li><strong>Hohe Priorität (unverzichtbar):</strong> Lizenz für ein Planungs-Tool, gutes Ansteckmikrofon, stabiles Stativ.</li>
+                        <li><strong>Mittlere Priorität (wichtig):</strong> Anschaffung/Prüfung einer Systemkamera, Basis-Beleuchtungsset, Lizenz für Canva for Teams, klare Regelung für KI-Tools.</li>
+                    </ul>
+                    <p>Eine genaue Inventur dessen, was physisch im Unternehmen vorhanden ist, wird unser erster Schritt sein.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- ======= Zeitplanung Section ======= -->
+        <section id="zeitplanung" class="reveal">
+            <div class="container">
+                <div class="text-center">
+                    <h2>Detaillierte Aufschlüsselung & die größten Zeitfresser</h2>
+                    <p>Eine realistische Zeitplanung ist die Grundlage für nachhaltigen Erfolg.</p>
+                </div>
+                 <div class="card" style="margin-top: 3rem;">
+                    <h3>Geschätzter Gesamtaufwand pro Woche: ca. 33 - 45 Stunden</h3>
+                    <p>Dieser Aufwand verteilt sich auf das gesamte Team, wobei der Großteil operativer Arbeit beim Social Media Manager liegt.</p>
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Aufgabenbereich</th>
+                                    <th>Tätigkeiten</th>
+                                    <th>Geschätzter Aufwand / Woche (SMM)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Planung & Strategie</strong></td>
+                                    <td>Wöchentliches Meeting, Themenfindung, Abstimmung.</td>
+                                    <td>3 Stunden</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Content-Erstellung</strong></td>
+                                    <td>Recherche, Interviews, Text, Grafik, Video-Schnitt.</td>
+                                    <td>24 - 32 Stunden</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Community Management</strong></td>
+                                    <td>Tägliches Monitoring, Antworten, Interaktion.</td>
+                                    <td>5 - 8 Stunden</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Reporting & Analyse</strong></td>
+                                    <td>Wöchentliches Zusammentragen der KPIs.</td>
+                                    <td>1 - 2 Stunden</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <h4 style="margin-top: 2rem;">Wo können wir Zeit sparen?</h4>
+                    <ul>
+                        <li><strong>Content-Batching:</strong> Content für die Folgewoche an einem Tag produzieren.</li>
+                        <li><strong>Intelligente Template-Nutzung:</strong> Konsequente Nutzung von Vorlagen.</li>
+                        <li><strong>Effiziente Freigabeprozesse:</strong> Klare, schnelle Freigaben über ein Planungstool.</li>
+                        <li><strong>Cleveres Content-Recycling:</strong> Aus einer großen Idee mehrere kleine Stücke machen.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======= Markenstrategie Section ======= -->
+        <section id="markenstrategie" class="reveal">
+            <div class="container">
+                <div class="text-center">
+                    <h2>Strategie für die Wahl Group</h2>
+                    <p>Wir bauen auf der korrekten Branchenidentität auf: Vision, Mission, USP und Content-Kategorien.</p>
+                </div>
+                <div class="grid-layout">
+                    <div class="card">
+                        <h4>Vision</h4>
+                        <p>In 5-10 Jahren ist die Wahl Group nicht nur der führende Automobilhändler der Region, sondern ein ganzheitlicher Premiumanbieter für individuelle Mobilität, der den Wandel zur E-Mobilität aktiv mitgestaltet.</p>
+                    </div>
+                    <div class="card">
+                        <h4>Mission</h4>
+                        <p>Wir begeistern unsere Kunden täglich mit exzellentem Service, herausragender Expertise und zukunftsweisenden Mobilitätslösungen. Unser Ziel ist eine lebenslange Partnerschaft, die auf Vertrauen, Qualität und Freude am Fahren basiert.</p>
+                    </div>
+                    <div class="card">
+                        <h4>USP</h4>
+                        <p>Die Wahl Group verbindet die persönliche Beratung eines Familienunternehmens mit der Innovationskraft führender Premium-Marken und wegweisender Expertise in der Elektromobilität.</p>
+                    </div>
+                </div>
+                <div class="card" style="margin-top: 3rem;">
+                    <h3>Neue Content-Kategorien (spezifisch für die Automobilbranche)</h3>
+                    <ul>
+                        <li><strong>#WahlErleben (Fahrzeuge & Faszination):</strong> Vorstellung neuer Modelle, emotionale Videos, Design-Highlights.</li>
+                        <li><strong>#WahlZukunft (E-Mobilität & Innovation):</strong> Alles rund um E-Autos, Ladeinfrastruktur, Mythen aufklären.</li>
+                        <li><strong>#WahlWerkstatt (Service & Know-how):</strong> Einblicke in die Werkstatt, Service-Angebote, Tipps vom Experten.</li>
+                        <li><strong>#TeamWahl (Menschen & Karriere):</strong> Vorstellung von Mitarbeitern, Einblicke in Schulungen, offene Stellen.</li>
+                        <li><strong>#WahlLokal (Region & Events):</strong> Berichte von lokalen Events, Sponsoring, Kooperationen.</li>
+                    </ul>
+                </div>
+
+                <div class="text-center" style="margin-top: 4rem;">
+                    <h3>Die Übersetzung für unsere Automobil-Zielgruppen</h3>
+                </div>
+                <div class="grid-layout">
+                    <div class="card">
+                        <h4>Für den "etablierten Unternehmer" (Typ A)</h4>
+                        <p>Er sucht einen repräsentativen Firmenwagen, absolute Zuverlässigkeit und einen prestigeträchtigen Partner.</p>
+                        <ul>
+                            <li><strong>Vision für ihn:</strong> "Für meinen Fuhrpark brauche ich einen Partner, auf den ich mich zu 100 % verlassen kann."</li>
+                            <li><strong>Mission für ihn:</strong> "Meine Zeit ist kostbar. Exzellenter Service bedeutet, dass alles reibungslos läuft."</li>
+                            <li><strong>USP für ihn:</strong> "Ich kaufe bei einem Unternehmen mit Gesicht und Namen. Die Inhaberfamilie bürgt für Qualität."</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h4>Für den "aufstrebenden Gründer" (Typ B)</h4>
+                        <p>Er sucht eine flexible Mobilitätslösung, ein innovatives Fahrzeug und passende Leasing-Optionen.</p>
+                         <ul>
+                            <li><strong>Vision für ihn:</strong> "Mein Unternehmen ist modern, mein Auto muss es auch sein. Die Wahl Group ist am Puls der Zeit."</li>
+                            <li><strong>Mission für ihn:</strong> "Ich brauche flexible Leasing-Optionen und ein Auto, das auch ein Statement ist."</li>
+                            <li><strong>USP für ihn:</strong> "Hier bekomme ich die neueste Technik und kann sicher sein, eine zukunftssichere Entscheidung zu treffen."</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h4>Für die "junge Fachkraft" (Typ C)</h4>
+                        <p>Sie sucht den Einstieg in die Premium-Mobilität, faire Beratung und ein unkompliziertes Kauferlebnis.</p>
+                         <ul>
+                            <li><strong>Vision für sie:</strong> "Auch am Anfang meiner Karriere ist der Traum vom ersten BMW hier erreichbar."</li>
+                            <li><strong>Mission für sie:</strong> "Hier werde ich ernst genommen und ehrlich beraten, ohne dass man mir etwas aufschwatzen will."</li>
+                            <li><strong>USP für sie:</strong> "Ich schätze die persönliche Beratung, will aber gleichzeitig alles andere unkompliziert und digital erledigen."</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2025 Wahl Group | Strategie & Ressourcen</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+
+            // --- Funktion für sanfte Scroll-Animationen beim Erscheinen ---
+            const revealElements = document.querySelectorAll('.reveal');
+
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            revealElements.forEach(element => {
+                revealObserver.observe(element);
+            });
+        });
+    </script>
+</body>
+</html>
